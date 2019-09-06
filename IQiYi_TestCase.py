@@ -13,6 +13,7 @@ desires_caps['appActivity'] = 'org.qiyi.android.video.MainActivity'
 
 driver = webdriver.Remote('http://localhost:4723/wd/hub',desires_caps)
 
+#解决弹窗
 def DealThePopWindow():
 
     try:
@@ -61,7 +62,7 @@ class Play():
 
 
     def ChangeChannels(self):
-        """切台50次"""
+        """切台50次这个可能使用时会出错"""
         texts = []
         texts.append(driver.find_elements_by_xpath("//*[@class='android.support.v7.widget.RecyclerView']" and "//*[@index='5']"))
         i = 0
@@ -76,24 +77,20 @@ class Play():
 
 
     def Dragbar(self):
+        """拖动进度条"""
         TouchAction(driver).press(x=330,y=623).move_to(x=410,y=623).move_to(x=621,y=623)
         time.sleep(3)
 
 
 
     def Adjustlight(self):
+        """调节亮度"""
         driver.swipe(start_x=276,start_y=574,end_x=226,end_y=113,duration=1)
         time.sleep(3)
 
 
 
-#DealThePopWindow()
-#IQiYi = Play()
-#IQiYi.TapToPlay()
-#IQiYi.Adjustlight()
-#IQiYi.Dragbar()
-#IQiYi.ChangeChannels()
-#IQiYi.EnlargeWindow()
+
 
 
 
